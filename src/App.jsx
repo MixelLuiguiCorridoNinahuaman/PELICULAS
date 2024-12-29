@@ -13,7 +13,7 @@ import Dashboard from "./pages/admin/dashboard/Dashboard";
 import MyState from "./context/data/myState";
 import CreateBlog from "./pages/admin/createBlog/CreateBlog";
 import { Toaster } from "react-hot-toast";
-// path updated
+// 
 function App() {
   return (
     <MyState>
