@@ -1,9 +1,9 @@
 import React from 'react'
 
-function NoPage() {
+function Nopage() {
   return (
     <div>Nopage</div>
   )
 }
 
-export default NoPage
+export default Nopage
