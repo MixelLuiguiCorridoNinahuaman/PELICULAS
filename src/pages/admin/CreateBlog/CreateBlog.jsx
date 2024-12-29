@@ -7,7 +7,10 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
+
 function CreateBlog() {
+
+    const tinyMCEApiKey = import.meta.env.VITE_TINYMCE_API_KEY; // Fetch the API key from the environment variable
     const context = useContext(myContext);
     const { mode } = context;
 
@@ -18,8 +21,8 @@ function CreateBlog() {
     console.log("Value: ",);
     console.log("text: ", text);
 
-    const tinyMCEApiKey = process.env.REACT_APP_TINYMCE_API_KEY; // Fetch the API key from the environment variable
 
+    
 
     // Create markup function 
     function createMarkup(c) {
@@ -129,7 +132,7 @@ function CreateBlog() {
 
                 {/* Four Editor  */}
                 <Editor
-                    apiKey={tinyMCEApiKey}                          //API Key
+                    apiKey={tinyMCEApiKey}     //Tiny MCE API Key
                     onEditorChange={(newValue, editor) => {
                         setBlogs({ blogs, content: newValue });
                         settext(editor.getContent({ format: 'text' }));
