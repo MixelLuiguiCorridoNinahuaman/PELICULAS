@@ -129,7 +129,7 @@ function CreateBlog() {
 
                 {/* Four Editor  */}
                 <Editor
-                    apiKey={tinyMCEApiKey}
+                    apiKey={tinyMCEApiKey}                          //API Key
                     onEditorChange={(newValue, editor) => {
                         setBlogs({ blogs, content: newValue });
                         settext(editor.getContent({ format: 'text' }));
