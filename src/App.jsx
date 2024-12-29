@@ -10,7 +10,7 @@ import NoPage from "./pages/nopage/NoPage";
 import BlogInfo from "./pages/blogInfo/BlogInfo";
 import AdminLogin from "./pages/admin/adminLogin/AdminLogin";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
-import MyState from "./context/data/MyState";
+import MyState from "./context/data/myState";
 import CreateBlog from "./pages/admin/CreateBlog/CreateBlog";
 import { Toaster } from "react-hot-toast";
 
