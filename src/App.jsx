@@ -6,14 +6,14 @@ import {
 import Home from "./pages/home/Home";
 import Blog from "./pages/blog/Blog";
 import AllBlogs from "./pages/allBlogs/AllBlogs";
-import NoPage from "./pages/nopage/NoPage";
+import NoPage from "./pages/nopage/tempNoPage";
 import BlogInfo from "./pages/blogInfo/BlogInfo";
 import AdminLogin from "./pages/admin/adminLogin/AdminLogin";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import MyState from "./context/data/myState";
 import CreateBlog from "./pages/admin/createBlog/CreateBlog";
 import { Toaster } from "react-hot-toast";
-// 
+
 function App() {
   return (
     <MyState>
