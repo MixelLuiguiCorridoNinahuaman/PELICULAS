@@ -1,85 +1,85 @@
-name: Build, Test, and Deploy the blog to Vercel
+# name: Build, Test, and Deploy the blog to Vercel
 
-on:
-  push:
-    branches:
-      - main  # Trigger workflow on push to the 'main' branch
-  pull_request:
-    branches:
-      - main  # Trigger workflow on a pull request to 'main'
+# on:
+#   push:
+#     branches:
+#       - main  # Trigger workflow on push to the 'main' branch
+#   pull_request:
+#     branches:
+#       - main  # Trigger workflow on a pull request to 'main'
 
-jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout code from the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+# jobs:
+#   build:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     steps:
+#       # Checkout code from the repository
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      # Set up Node.js for the build process
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'  # Specify the Node.js version you want
+#       # Set up Node.js for the build process
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '18'  # Specify the Node.js version you want
 
-      # Install dependencies
-      - name: Install dependencies
-        run: |
-          npm install
+#       # Install dependencies
+#       - name: Install dependencies
+#         run: |
+#           npm install
 
-      # Run the build process
-      - name: Build project
-        run: |
-          npm run build
+#       # Run the build process
+#       - name: Build project
+#         run: |
+#           npm run build
 
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: build  # Wait for the 'build' job to complete
-    steps:
-      # Checkout code from the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+#   test:
+#     name: Test
+#     runs-on: ubuntu-latest
+#     needs: build  # Wait for the 'build' job to complete
+#     steps:
+#       # Checkout code from the repository
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      # Set up Node.js for testing
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+#       # Set up Node.js for testing
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '18'
 
-      # Install dependencies
-      - name: Install dependencies
-        run: |
-          npm install
+#       # Install dependencies
+#       - name: Install dependencies
+#         run: |
+#           npm install
 
-      # Run tests
-      - name: Run tests
-        run: |
-          npm test  # Replace with your test command
+#       # Run tests
+#       - name: Run tests
+#         run: |
+#           npm test  # Replace with your test command
 
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: test  # Wait for the 'test' job to complete
-    steps:
-      # Checkout code from the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+#   deploy:
+#     name: Deploy
+#     runs-on: ubuntu-latest
+#     needs: test  # Wait for the 'test' job to complete
+#     steps:
+#       # Checkout code from the repository
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      # Set up Node.js for deployment
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+#       # Set up Node.js for deployment
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '18'
 
-      # Deploy to Vercel using the Vercel CLI
-      - name: Deploy to Vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Store your Vercel token as a secret
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}  # Store your Vercel Organization ID as a secret
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}  # Store your Vercel Project ID as a secret
-        run: |
-          npm install -g vercel  # Install the Vercel CLI
-          vercel --token $VERCEL_TOKEN --prod --confirm  # Deploy the project to Vercel (production environment)
+#       # Deploy to Vercel using the Vercel CLI
+#       - name: Deploy to Vercel
+#         env:
+#           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Store your Vercel token as a secret
+#           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}  # Store your Vercel Organization ID as a secret
+#           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}  # Store your Vercel Project ID as a secret
+#         run: |
+#           npm install -g vercel  # Install the Vercel CLI
+#           vercel --token $VERCEL_TOKEN --prod --confirm  # Deploy the project to Vercel (production environment)
 
