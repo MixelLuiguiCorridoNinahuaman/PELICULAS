@@ -2,11 +2,15 @@ import React, { useState, useContext } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { BsFillArrowLeftCircleFill } from "react-icons/bs"
 import myContext from '../../../context/data/myContext';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     Button,
     Typography,
 } from "@material-tailwind/react";
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
+import { fireDB, storage } from '../../../firebase/FirebaseConfig';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import toast from 'react-hot-toast';
 
 function CreateBlog() {
 
@@ -14,15 +18,62 @@ function CreateBlog() {
     const context = useContext(myContext);
     const { mode } = context;
 
-    const [blogs, setBlogs] = useState('');
+    const [blogs, setBlogs] = useState(
+        {
+            title: '',
+            category: '',
+            content: '',
+            time: Timestamp.now(),
+        }
+    );
+
     const [thumbnail, setthumbnail] = useState();
 
     const [text, settext] = useState('');
     console.log("Value: ",);
     console.log("text: ", text);
 
+    const navigate = useNavigate();
 
-    
+    const addPost = async () => {
+        if (blogs.title === "" || blogs.category === "" || blogs.content === "" || blogs.thumbnail === "") {
+            toast.error('Please Fill All Fields');
+        }
+        // console.log(blogs.content)
+        uploadImage()
+    }
+
+    const uploadImage = () => {
+        if (!thumbnail) return;
+        const imageRef = ref(storage, `blogimage/${thumbnail.name}`);
+        uploadBytes(imageRef, thumbnail).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                const productRef = collection(fireDB, "blogPost")
+                try {
+                    addDoc(productRef, {
+                        blogs,
+                        thumbnail: url,
+                        time: Timestamp.now(),
+                        date: new Date().toLocaleString(
+                            "en-US",
+                            {
+                                month: "short",
+                                day: "2-digit",
+                                year: "numeric",
+                            }
+                        )
+                    })
+                    navigate('/dashboard')
+                    toast.success('Post Added Successfully');
+
+
+                } catch (error) {
+                    toast.error(error)
+                    console.log(error)
+                }
+            });
+        });
+    }
 
     // Create markup function 
     function createMarkup(c) {
@@ -98,10 +149,10 @@ function CreateBlog() {
                 <div className="mb-3">
                     <input
                         label="Enter your Title"
-                       className={`shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-md p-1.5 
+                        className={`shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-md p-1.5 
                  outline-none ${mode === 'dark'
-                 ? 'placeholder-black'
-                 : 'placeholder-black'}`}
+                                ? 'placeholder-black'
+                                : 'placeholder-black'}`}
                         placeholder="Enter Your Title"
                         style={{
                             background: mode === 'dark'
@@ -109,6 +160,8 @@ function CreateBlog() {
                                 : 'rgb(226, 232, 240)'
                         }}
                         name="title"
+                        value={blogs.title}
+                        onChange={(e) => setBlogs({ ...blogs, title: e.target.value })}
                     />
                 </div>
 
@@ -118,8 +171,8 @@ function CreateBlog() {
                         label="Enter your Category"
                         className={`shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-md p-1.5 
                  outline-none ${mode === 'dark'
-                 ? 'placeholder-black'
-                 : 'placeholder-black'}`}
+                                ? 'placeholder-black'
+                                : 'placeholder-black'}`}
                         placeholder="Enter Your Category"
                         style={{
                             background: mode === 'dark'
@@ -127,26 +180,39 @@ function CreateBlog() {
                                 : 'rgb(226, 232, 240)'
                         }}
                         name="category"
+                        value={blogs.category}
+                        onChange={(e) => setBlogs({ ...blogs, category: e.target.value })}
                     />
                 </div>
 
                 {/* Four Editor  */}
+
+                {/* <Editor
+                        apiKey={tinyMCEApiKey} // TinyMCE API Key
+                        onEditorChange={(newValue) => setBlogs({ ...blogs, content: newValue })}
+                        init={{
+                            plugins: ['anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount']
+                        }}
+                        /> */}
+
+
                 <Editor
-                    apiKey={tinyMCEApiKey}     //Tiny MCE API Key
+                    apiKey={tinyMCEApiKey} // TinyMCE API Key
                     onEditorChange={(newValue, editor) => {
-                        setBlogs({ blogs, content: newValue });
+                        setBlogs({ ...blogs, content: newValue });
                         settext(editor.getContent({ format: 'text' }));
                     }}
                     onInit={(evt, editor) => {
                         settext(editor.getContent({ format: 'text' }));
                     }}
                     init={{
-                        plugins: 'a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions mergetags nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents template  tinydrive tinymcespellchecker typography visualblocks visualchars wordcount'
+                        plugins: ['anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount']
                     }}
                 />
 
                 {/* Five Submit Button  */}
                 <Button className=" w-full mt-5"
+                    onClick={addPost}
                     style={{
                         background: mode === 'dark'
                             ? 'rgb(226, 232, 240)'
@@ -156,15 +222,15 @@ function CreateBlog() {
                             : 'rgb(226, 232, 240)'
                     }}
                 >
-                    Send
+                    Submit
                 </Button>
 
                 {/* Six Preview Section  */}
                 <div className="">
                     <h1 className=" text-center mb-3 text-2xl">Preview</h1>
                     <div className="content">
-                    <div
-                        className={`[&> h1]:text-[32px] [&>h1]:font-bold  [&>h1]:mb-2.5
+                        <div
+                            className={`[&> h1]:text-[32px] [&>h1]:font-bold  [&>h1]:mb-2.5
                         ${mode === 'dark' ? '[&>h1]:text-[#ff4d4d]' : '[&>h1]:text-black'}
 
                         [&>h2]:text-[24px] [&>h2]:font-bold [&>h2]:mb-2.5
@@ -196,10 +262,10 @@ function CreateBlog() {
 
                         [&>img]:rounded-lg
                         `}
-                         dangerouslySetInnerHTML={createMarkup(blogs.content)}>
+                            dangerouslySetInnerHTML={createMarkup(blogs.content)}>
+                        </div>
                     </div>
-            </div>
-        </div >
+                </div >
             </div >
         </div >
     )
