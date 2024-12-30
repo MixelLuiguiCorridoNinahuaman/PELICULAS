@@ -2,11 +2,19 @@ import React, { useContext } from 'react'
 import Layout from '../../../components/layout/Layout'
 import myContext from '../../../context/data/myContext';
 import { Button } from '@material-tailwind/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Dashboard() {
     const context = useContext(myContext);
     const { mode } = context;
+
+    const navigate = useNavigate();
+
+    //* Logout Function 
+    const logout = () => {
+        localStorage.clear("admin");
+        navigate('/')
+    }
     return (
         <Layout>
             <div className="py-10">
@@ -23,7 +31,7 @@ function Dashboard() {
                             className='text-center font-bold text-2xl mb-2'
                             style={{ color: mode === 'dark' ? 'white' : 'black' }}
                         >
-                            Achira Nadeeshan Dilhara
+                            Kamal Nayan Upadhyay
                         </h1>
 
                         <h2
@@ -31,7 +39,7 @@ function Dashboard() {
                             Software Developer
                         </h2>
                         <h2
-                            style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">hrachiranadeeshan@gmail.com
+                            style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">knupadhyay784@gmail.com
                         </h2>
                         <h2
                             style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">
@@ -57,6 +65,7 @@ function Dashboard() {
                             </Link>
                             <div className="mb-2">
                                 <Button
+                                    onClick={logout}
                                     style={{
                                         background: mode === 'dark'
                                             ? 'rgb(226, 232, 240)'
@@ -76,10 +85,10 @@ function Dashboard() {
 
                 {/* Line  */}
                 <hr className={`border-2
-                 ${mode === 'dark'
-                     ? 'border-gray-300'
-                     : 'border-gray-400'}` 
-                 }
+                    ${mode === 'dark'
+                            ? 'border-gray-300'
+                            : 'border-gray-400'}`
+                    }
                 />
 
                 {/* Table  */}

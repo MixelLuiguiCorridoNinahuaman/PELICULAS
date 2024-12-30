@@ -2,7 +2,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Blog from "./pages/blog/Blog";
@@ -26,10 +26,14 @@ function App() {
           <Route path="/bloginfo/:id" element={<BlogInfo/>} />
           <Route path="/adminlogin" element={<AdminLogin/>} />
           <Route path="/dashboard" element={
-            <Dashboard/>
+            <ProtectedRouteForAdmin>
+              <Dashboard />
+            </ProtectedRouteForAdmin>
           } />
           <Route path="/createblog" element={
-            <CreateBlog/>
+            <ProtectedRouteForAdmin>
+              <CreateBlog />
+            </ProtectedRouteForAdmin>
           } />
           <Route path="/*" element={<NoPage />} />
         </Routes>
@@ -43,7 +47,7 @@ export default App
 
 export const ProtectedRouteForAdmin = ({ children }) => {
   const admin = JSON.parse(localStorage.getItem('admin'))
-  if (admin?.user?.email === "testuser@gmail.com") {
+  if (admin?.user?.email === "hrachiranadeeshan@gmail.com") {
     return children
   }
   else {
