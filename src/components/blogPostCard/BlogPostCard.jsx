@@ -40,8 +40,8 @@ function BlogPostCard() {
                         ${mode === 'dark'
                             ? 'shadow-gray-700'
                             : 'shadow-xl'
-                          } 
-                        rounded-xl overflow-hidden`}
+                            } 
+                        rounded-xl overflow-hidden`} 
                       >
                         {/* Blog Thumbnail  */}
                         <img className=" w-full" src={thumbnail} alt="blog" />
@@ -72,7 +72,7 @@ function BlogPostCard() {
                               ? 'rgb(226, 232, 240)'
                               : ' rgb(30, 41, 59)'
                           }}>
-
+                            {item.blogs.category} 
                           </p>
                         </div>
                       </div>
