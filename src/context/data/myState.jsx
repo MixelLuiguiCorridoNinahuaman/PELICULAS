@@ -56,22 +56,33 @@ function MyState(props) {
     }, []);
 
     // Blog Delete Function 
-    const deleteBlogs = async (id, imagePath) => {
+    const deleteBlogs = async (id) => {
         try {
             await deleteDoc(doc(fireDB, "blogPost", id));
-
-            if (imagePath) {
-                const imageRef = ref(storage, imagePath);
-                await deleteObject(imageRef);
-            }
-
             getAllBlogs()
-            toast.success("Blog deleted successfully")
+            toast.success("Blogs deleted successfully")
         } catch (error) {
-            console.error("Error deleting blog:", error);
-            toast.error("Failed to delete the blog");
+            console.log(error)
         }
     }
+
+    // // Blog Delete Function 
+    // const deleteBlogs = async (id, imagePath) => {
+    //     try {
+    //         await deleteDoc(doc(fireDB, "blogPost", id));
+
+    //         if (imagePath) {
+    //             const imageRef = ref(storage, imagePath);
+    //             await deleteObject(imageRef);
+    //         }
+
+    //         getAllBlogs()
+    //         toast.success("Blog deleted successfully")
+    //     } catch (error) {
+    //         console.error("Error deleting blog:", error);
+    //         toast.error("Failed to delete the blog");
+    //     }
+    // }
 
     return (
         <MyContext.Provider value={{
