@@ -1,3 +1,20 @@
+name: Placeholder CI
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do nothing
+        run: echo "Placeholder CI - No actions are performed."
+
 # name: Build, Test, and Deploy the blog to Vercel
 
 # on:
