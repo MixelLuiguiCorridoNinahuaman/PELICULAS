@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import MyContext from './myContext';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { deleteObject, ref } from "firebase/storage";
 import { fireDB } from '../../firebase/FirebaseConfig';
+import { toast } from 'react-hot-toast';
 
 function MyState(props) {
     const [mode, setMode] = useState('light'); // Whether dark mode is enabled or not
@@ -16,8 +18,13 @@ function MyState(props) {
         }
     }
 
+    //* getAllBlog State
     const [getAllBlog, setGetAllBlog] = useState([]);
+
+    //* search state
     const [searchkey, setSearchkey] = useState('')
+
+    //* loading state
     const [loading, setloading] = useState(false);
 
     function getAllBlogs() {
@@ -32,9 +39,9 @@ function MyState(props) {
                 QuerySnapshot.forEach((doc) => {
                     blogArray.push({ ...doc.data(), id: doc.id });
                 });
-                
+
                 setGetAllBlog(blogArray)
-                console.log(blogArray)   
+                console.log(blogArray)
                 setloading(false)
             });
             return () => data;
@@ -48,6 +55,24 @@ function MyState(props) {
         getAllBlogs();
     }, []);
 
+    // Blog Delete Function 
+    const deleteBlogs = async (id, imagePath) => {
+        try {
+            await deleteDoc(doc(fireDB, "blogPost", id));
+
+            if (imagePath) {
+                const imageRef = ref(storage, imagePath);
+                await deleteObject(imageRef);
+            }
+
+            getAllBlogs()
+            toast.success("Blog deleted successfully")
+        } catch (error) {
+            console.error("Error deleting blog:", error);
+            toast.error("Failed to delete the blog");
+        }
+    }
+
     return (
         <MyContext.Provider value={{
             mode,
@@ -56,7 +81,8 @@ function MyState(props) {
             setSearchkey,
             loading,
             setloading,
-            getAllBlog
+            getAllBlog,
+            deleteBlogs
         }}>
             {props.children}
         </MyContext.Provider>

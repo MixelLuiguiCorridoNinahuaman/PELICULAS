@@ -45,12 +45,23 @@ function App() {
 
 export default App
 
+// export const ProtectedRouteForAdmin = ({ children }) => {
+//   const admin = JSON.parse(localStorage.getItem('admin'))
+//   if (admin?.user?.email === "hrachiranadeeshan@gmail.com") {
+//     return children
+//   }
+//   else {
+//     return <Navigate to={'/adminlogin'} />
+//   }
+// }
+
 export const ProtectedRouteForAdmin = ({ children }) => {
-  const admin = JSON.parse(localStorage.getItem('admin'))
-  if (admin?.user?.email === "hrachiranadeeshan@gmail.com") {
-    return children
+  const admin = JSON.parse(localStorage.getItem('admin'));
+  const allowedEmails = ["hrachiranadeeshan@gmail.com", "test@email.com"]; // List of allowed admin emails
+
+  if (allowedEmails.includes(admin?.user?.email)) {
+    return children;
+  } else {
+    return <Navigate to={'/adminlogin'} />;
   }
-  else {
-    return <Navigate to={'/adminlogin'} />
-  }
-}
+};

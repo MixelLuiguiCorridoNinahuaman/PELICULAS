@@ -61,16 +61,18 @@ This project uses the following environment variables:
 - `VITE_FIREBASE_APP_ID`
 - `VITE_FIREBASE_MEASUREMENT_ID`
 
-Refer to `.env.example` for placeholders and descriptions.
+Refer to `.env.example` for placeholders.
 
-## Contributing
+Get your APIs at [Firebase](https://firebase.google.com/) & [Tiny Cloud](https://www.tiny.cloud/). -->
+
+<!-- ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE). -->
 
 ---
 
-For any questions or issues, feel free to open an issue in the repository. -->
+For any questions or issues, feel free to open an issue in the repository.
