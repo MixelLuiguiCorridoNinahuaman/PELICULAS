@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import myContext from '../../context/data/myContext';
 import Layout from '../../components/layout/Layout';
 import { useNavigate } from 'react-router';
-import { use } from 'react';
+import Loader from '../../components/loader/Loader';
 
 function AllBlogs() {
     const context = useContext(myContext);
@@ -93,7 +93,8 @@ function AllBlogs() {
                             </>
                             :
                             <>
-                                <h1 className='text-xl font-bold'>Not Found</h1>
+                                {/* <h1 className='text-xl font-bold'>Not Found</h1> */}
+                                <Loader />
                             </>
                         }
                     </div>
