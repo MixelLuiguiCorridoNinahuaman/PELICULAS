@@ -2,6 +2,7 @@ import { Button } from '@material-tailwind/react'
 import React, { useContext } from 'react'
 import myContext from '../../context/data/myContext';
 import { useNavigate } from 'react-router';
+import Loader from '../loader/Loader';
 
 function BlogPostCard() {
   const context = useContext(myContext);
@@ -82,7 +83,8 @@ function BlogPostCard() {
               </>
               :
               <>
-                <h1 className='text-xl font-bold'>Not Found</h1>
+                {/* <h1 className='text-xl font-bold'>Not Found</h1> */}
+                <Loader />
               </>
             }
           </div>

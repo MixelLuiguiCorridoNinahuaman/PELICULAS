@@ -75,6 +75,10 @@ function CreateBlog() {
         });
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     // Create markup function 
     function createMarkup(c) {
         return { __html: c };

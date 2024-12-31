@@ -2,12 +2,18 @@ import React, { useContext } from 'react'
 import myContext from '../../context/data/myContext';
 import Layout from '../../components/layout/Layout';
 import { useNavigate } from 'react-router';
+import { use } from 'react';
 
 function AllBlogs() {
     const context = useContext(myContext);
     const { mode, getAllBlog } = context;
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <Layout>
             <section className="text-gray-600 body-font">
