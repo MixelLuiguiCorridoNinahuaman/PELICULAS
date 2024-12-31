@@ -37,7 +37,7 @@ function CreateBlog() {
 
     const addPost = async () => {
         if (blogs.title === "" || blogs.category === "" || blogs.content === "" || blogs.thumbnail === "") {
-            toast.error('Please Fill All Fields');
+            toast.error('Please fill all fields');
         }
         // console.log(blogs.content)
         uploadImage()
