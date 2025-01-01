@@ -6,7 +6,7 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
   const context = useContext(myContext);
   const { mode } = context;
 
-  const isDisabled = !commentText.trim(); // Disable button only if comment is empty
+  const isDisabled = !fullName.trim() ||!commentText.trim(); // Disable button only if comment/fullname is empty
 
   return (
     <section className="py-8 lg:py-16">
