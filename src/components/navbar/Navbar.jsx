@@ -52,9 +52,13 @@ export default function Nav() {
                 className="p-1 font-normal"
                 style={{ color: mode === 'dark' ? 'white' : 'white' }}
             >
-                <Link to={'/adminlogin'} className="flex items-center">
-                    Admin Login
-                </Link>
+                <div>
+                    {admin
+                        ? "" :
+                        <Link to={'/adminlogin'} className="flex items-center">
+                            Admin Login
+                        </Link>}
+                </div>
             </Typography>
         </ul>
     );

@@ -68,9 +68,9 @@ export default function SearchDialog() {
                     </div>
 
                     {/* Heading  */}
-                    <div className=" text-center">
+                    {/* <div className=" text-center">
                         <h1 className=" text-gray-600">Created by Achira Nadeeshan</h1>
-                    </div>
+                    </div> */}
                 </DialogBody>
             </Dialog>
         </Fragment>
