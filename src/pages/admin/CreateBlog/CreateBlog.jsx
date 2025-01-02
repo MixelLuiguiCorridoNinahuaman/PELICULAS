@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { BsFillArrowLeftCircleFill } from "react-icons/bs"
 import myContext from '../../../context/data/myContext';
@@ -74,10 +74,6 @@ function CreateBlog() {
             });
         });
     }
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     // Create markup function 
     function createMarkup(c) {
