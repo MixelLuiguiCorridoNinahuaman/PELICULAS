@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MyContext from './myContext';
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { deleteObject, ref } from "firebase/storage";
@@ -50,6 +50,10 @@ function MyState(props) {
             setloading(false)
         }
     }
+
+    useEffect(() => {
+        getAllBlogs();
+    }, []);
 
     // Blog Delete Function 
     const deleteBlogs = async (id) => {
