@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'
+import React, { useContext, useEffect } from 'react'
 import Layout from '../../../components/layout/Layout'
 import myContext from '../../../context/data/myContext';
 import { Button } from '@material-tailwind/react';
@@ -15,6 +15,10 @@ function Dashboard() {
         localStorage.clear();
         navigate('/')
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
 
     return (
         <Layout>
@@ -87,9 +91,9 @@ function Dashboard() {
                 {/* Line  */}
                 <hr className={`border-2
                  ${mode === 'dark'
-                     ? 'border-gray-300'
-                     : 'border-gray-400'}`
-                 }
+                        ? 'border-gray-300'
+                        : 'border-gray-400'}`
+                }
                 />
 
                 {/* Table  */}
@@ -133,7 +137,7 @@ function Dashboard() {
                                     ?
                                     <>
                                         {getAllBlog.map((item, index) => {
-                                            const {thumbnail, date, id} = item;
+                                            const { thumbnail, date, id } = item;
                                             console.log(item)
                                             return (
                                                 <tbody>
@@ -147,8 +151,8 @@ function Dashboard() {
                                                         <th style={{ color: mode === 'dark' ? 'white' : 'black' }} scope="row" className="px-6 py-4 font-medium ">
 
                                                             {/* thumbnail  */}
-                                                            <img className='w-16 rounded-lg' 
-                                                            src={thumbnail} alt="thumbnail" />
+                                                            <img className='w-16 rounded-lg'
+                                                                src={thumbnail} alt="thumbnail" />
                                                         </th>
 
                                                         {/* Blog Title  */}
@@ -167,7 +171,7 @@ function Dashboard() {
                                                         </td>
 
                                                         {/* Delete Blog  */}
-                                                        <td onClick={()=> deleteBlogs(id)} style={{ color: mode === 'dark' ? 'white' : 'black' }} className="px-6 py-4">
+                                                        <td onClick={() => deleteBlogs(id)} style={{ color: mode === 'dark' ? 'white' : 'black' }} className="px-6 py-4">
                                                             <button className=' px-4 py-1 rounded-lg text-white font-bold bg-red-500'>
                                                                 Delete
                                                             </button>
