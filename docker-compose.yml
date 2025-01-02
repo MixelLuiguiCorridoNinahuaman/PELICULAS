@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 3 # Ensures 3 instances are created
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    container_name: movie-talk-nginx
+    ports:
+      - "8080:80" # Expose NGINX on port 8080
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - react-app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
