@@ -6,7 +6,7 @@ import {
 } from "@material-tailwind/react";
 import myContext from "../../context/data/myContext";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 
 export default function SearchDialog() {
     const [open, setOpen] = useState(false);
@@ -44,28 +44,42 @@ export default function SearchDialog() {
                         />
                     </div>
 
-                    {/* Blog Card  */}
-                    <div className="flex justify-center flex-wrap  sm:mx-auto sm:mb-2 -mx-2  mt-4 mb-2 ">
-                        {
-                            getAllBlog.filter((obj) => obj.blogs.title.toLowerCase().includes(searchkey)).map((item, index) => {
 
-                                return (
-                                    <div key={index} className="p-2 sm:w-1/4 w-full " >
-                                        <div onClick={() => naviagte(`/bloginfo/${item.id}`)} className=" container cursor-pointer mx-auto px-4 bg-gray-200 p-2 rounded-lg ">
-                                            {/* Blog Thumbnail  */}
-                                            <img className="w-20 mb-2 rounded-lg"
-                                                src={item.thumbnail} alt="" />
+                    {/* Blog Card */}
+                    <div className="sm:mx-auto sm:mb-2 mt-4 mb-2">
+                        <ul className="w-full">
+                            {
+                                getAllBlog
+                                    .filter((obj) => obj.blogs.title.toLowerCase().includes(searchkey))
+                                    .map((item, index) => (
+                                        <li key={index} className="w-full mb-4">
+                                            <div
+                                                onClick={() => naviagte(`/bloginfo/${item.id}`)}
+                                                className="container cursor-pointer mx-auto px-4 bg-gray-200 p-2 rounded-lg"
+                                            >
+                                                {/* Flex container for image and text */}
+                                                <div className="flex items-center">
+                                                    {/* Blog Thumbnail */}
+                                                    <img className="w-20 h-20 mr-4 rounded-lg" src={item.thumbnail} alt="" />
 
-                                            {/* Blog Date  */}
-                                            <p className="w-40 text-sm">{item.date}</p>
+                                                    {/* Text Container */}
+                                                    <div className="flex flex-col">
+                                                        {/* Blog Date */}
+                                                        <p className="text-sm mb-1">{item.date}</p>
 
-                                            {/* Blog Title  */}
-                                            <h1>{item.blogs.title}</h1>
-                                        </div>
-                                    </div>
-                                )
-                            })}
+                                                        {/* Blog Title */}
+                                                        <h1 className="font-bold">{item.blogs.title}</h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))
+                            }
+                        </ul>
                     </div>
+
+
+
 
                     {/* Heading  */}
                     {/* <div className=" text-center">
