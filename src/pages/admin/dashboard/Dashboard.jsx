@@ -57,7 +57,7 @@ function Dashboard() {
                                         style={{
                                             background: mode === 'dark'
                                                 ? 'rgb(226, 232, 240)'
-                                                : 'rgb(30, 41, 59)',
+                                                : 'rgb(75, 11, 28)',
                                             color: mode === 'dark'
                                                 ? 'black'
                                                 : 'white'
@@ -74,7 +74,7 @@ function Dashboard() {
                                     style={{
                                         background: mode === 'dark'
                                             ? 'rgb(226, 232, 240)'
-                                            : 'rgb(30, 41, 59)',
+                                            : 'rgb(75, 11, 28)',
                                         color: mode === 'dark'
                                             ? 'black'
                                             : 'white'
@@ -107,26 +107,26 @@ function Dashboard() {
                                     style={{
                                         background: mode === 'dark'
                                             ? 'white'
-                                            : 'rgb(30, 41, 59)'
+                                            : 'rgb(75, 11, 28)'
                                     }}
                                     className="text-xs ">
                                     <tr>
-                                        <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
+                                        <th style={{ color: mode === 'dark' ? 'rgb(75, 11, 28)' : 'white' }} scope="col" className="px-6 py-3">
                                             S.No
                                         </th>
-                                        <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
+                                        <th style={{ color: mode === 'dark' ? 'rgb(75, 11, 28)' : 'white' }} scope="col" className="px-6 py-3">
                                             Thumbnail
                                         </th>
-                                        <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
+                                        <th style={{ color: mode === 'dark' ? 'rgb(75, 11, 28)' : 'white' }} scope="col" className="px-6 py-3">
                                             Title
                                         </th>
-                                        <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
+                                        <th style={{ color: mode === 'dark' ? 'rgb(75, 11, 28)' : 'white' }} scope="col" className="px-6 py-3">
                                             Category
                                         </th>
-                                        <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
+                                        <th style={{ color: mode === 'dark' ? 'rgb(75, 11, 28)' : 'white' }} scope="col" className="px-6 py-3">
                                             Date
                                         </th>
-                                        <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
+                                        <th style={{ color: mode === 'dark' ? 'rgb(75, 11, 28)' : 'white' }} scope="col" className="px-6 py-3">
                                             Action
                                         </th>
                                     </tr>
@@ -141,7 +141,7 @@ function Dashboard() {
                                             console.log(item)
                                             return (
                                                 <tbody>
-                                                    <tr className=" border-b-2" style={{ background: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }}>
+                                                    <tr className=" border-b-2" style={{ background: mode === 'dark' ? 'rgb(75, 11, 28)' : 'white' }}>
                                                         {/* S.No   */}
                                                         <td style={{ color: mode === 'dark' ? 'white' : 'black' }} className="px-6 py-4">
                                                             {index + 1}.

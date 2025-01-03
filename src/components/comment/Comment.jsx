@@ -22,7 +22,7 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
           <div
             className="py-2 px-4 mb-4 rounded-lg rounded-t-lg shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] border border-gray-200"
             style={{
-              background: mode === 'dark' ? '#353b48' : 'rgb(226, 232, 240)',
+              background: mode === 'dark' ? '#4b0b1c' : 'rgb(226, 232, 240)',
             }}
           >
             <input
@@ -32,7 +32,7 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
               onChange={(e) => setFullName(e.target.value)}
               className="px-0 w-full text-sm border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400"
               style={{
-                background: mode === 'dark' ? '#353b48' : 'rgb(226, 232, 240)',
+                background: mode === 'dark' ? '#4b0b1c' : 'rgb(226, 232, 240)',
               }}
             />
           </div>
@@ -41,7 +41,7 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
           <div
             className="py-2 px-4 mb-4 rounded-lg rounded-t-lg shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] border border-gray-200"
             style={{
-              background: mode === 'dark' ? '#353b48' : 'rgb(226, 232, 240)',
+              background: mode === 'dark' ? '#4b0b1c' : 'rgb(226, 232, 240)',
             }}
           >
             <label htmlFor="comment" className="sr-only">
@@ -54,7 +54,7 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
               onChange={(e) => setcommentText(e.target.value)}
               className="px-0 w-full text-sm border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400"
               style={{
-                background: mode === 'dark' ? '#353b48' : 'rgb(226, 232, 240)',
+                background: mode === 'dark' ? '#4b0b1c' : 'rgb(226, 232, 240)',
               }}
               placeholder="Write a comment..."
               required
@@ -71,11 +71,11 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
                   ? 'rgb(209, 213, 219)' // Greyed-out when disabled
                   : mode === 'dark'
                     ? 'rgb(226, 232, 240)'
-                    : 'rgb(30, 41, 59)',
+                    : 'rgb(75, 11, 28)',
                 color: isDisabled
                   ? 'rgb(107, 114, 128)' // Subtle text color when disabled
                   : mode === 'dark'
-                    ? 'rgb(30, 41, 59)'
+                    ? 'rgb(75, 11, 28)'
                     : 'rgb(226, 232, 240)',
               }}
             >
@@ -88,7 +88,7 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
         <article
           className="p-6 mb-6 text-base rounded-lg"
           style={{
-            background: mode === 'dark' ? '#353b48' : 'rgb(226, 232, 240)',
+            background: mode === 'dark' ? '#4b0b1c' : 'rgb(226, 232, 240)',
           }}
         >
           <h3 className="text-lg lg:text-2xl font-bold" style={{ color: mode === 'dark' ? 'white' : 'black' }}>

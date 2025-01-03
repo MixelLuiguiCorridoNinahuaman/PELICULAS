@@ -39,12 +39,12 @@ function AllBlogs() {
                                             <div
                                                 style={{
                                                     background: mode === 'dark'
-                                                        ? 'rgb(30, 41, 59)'
+                                                        ? 'rgb(75, 11, 28)'
                                                         : 'white',
                                                     borderBottom: mode === 'dark'
                                                         ?
                                                         ' 4px solid rgb(226, 232, 240)'
-                                                        : ' 4px solid rgb(30, 41, 59)'
+                                                        : ' 4px solid rgb(75, 11, 28)'
                                                 }}
                                                 onClick={() => navigate(`/bloginfo/${id}`)}
                                                 className={`h-full shadow-lg  hover:-translate-y-1 cursor-pointer hover:shadow-gray-400
@@ -63,7 +63,7 @@ function AllBlogs() {
                                                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{
                                                         color: mode === 'dark'
                                                             ? 'rgb(226, 232, 240)'
-                                                            : ' rgb(30, 41, 59)'
+                                                            : ' rgb(75, 11, 28)'
                                                     }}>
                                                         {date}
                                                     </h2>
@@ -72,7 +72,7 @@ function AllBlogs() {
                                                     <h1 className="title-font text-lg font-bold text-gray-900 mb-3" style={{
                                                         color: mode === 'dark'
                                                             ? 'rgb(226, 232, 240)'
-                                                            : ' rgb(30, 41, 59)'
+                                                            : ' rgb(75, 11, 28)'
                                                     }}>
                                                         {item.blogs.title}
                                                     </h1>
@@ -81,7 +81,7 @@ function AllBlogs() {
                                                     <p className="leading-relaxed mb-3" style={{
                                                         color: mode === 'dark'
                                                             ? 'rgb(226, 232, 240)'
-                                                            : ' rgb(30, 41, 59)'
+                                                            : ' rgb(75, 11, 28)'
                                                     }}>
                                                         {item.blogs.category}
                                                     </p>

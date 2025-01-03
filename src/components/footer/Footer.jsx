@@ -6,14 +6,14 @@ function Footer() {
     const context = useContext(myContext);
     const { mode } = context;
     return (
-        <footer className="body-font" style={{ background: mode === 'dark' ? 'rgb(30, 41, 59)' : '#30336b' }}>
+        <footer className="body-font" style={{ background: mode === 'dark' ? 'rgb(75, 11, 28)' : '#941331' }}>
             {/* Left Content  */}
             <div className="container px-5 py-3 mx-auto flex items-center sm:flex-row flex-col">
                 {/* Blog Logo  */}
                 <div className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                     {/* logo  */}
                     <img className='w-10'
-                        src="https://cdn-icons-png.flaticon.com/128/3685/3685253.png" alt="logo"
+                        src="/movie-talk.svg" alt="logo"
                     />
                     {/* logo text  */}
                     <span className="ml-3 text-xl text-white">
@@ -26,7 +26,7 @@ function Footer() {
                     © 2025 Movie Talk —
                     <a
                         href="https://www.linkedin.com/in/achiranadeeshan/"
-                        className="text-gray-600 ml-1"
+                        className="text-white-600 ml-1"
                         rel="noopener noreferrer"
                         target="_blank"
                     >

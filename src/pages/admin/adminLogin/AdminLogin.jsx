@@ -47,7 +47,7 @@ export default function AdminLogin() {
                 className="w-full max-w-[24rem]"
                 style={{
                     background: mode === 'dark'
-                        ? 'rgb(30, 41, 59)'
+                        ? 'rgb(75, 11, 28)'
                         : 'rgb(226, 232, 240)'
                 }}
             >
@@ -60,7 +60,7 @@ export default function AdminLogin() {
                     style={{
                         background: mode === 'dark'
                             ? 'rgb(226, 232, 240)'
-                            : 'rgb(30, 41, 59)'
+                            : 'rgb(75, 11, 28)'
                     }}
                 >
                     <div className="mb-4 rounded-full border border-white/10 bg-white/10 p-2 text-white">
@@ -74,7 +74,7 @@ export default function AdminLogin() {
                     {/* Top Haeding  */}
                     <Typography variant="h4" style={{
                         color: mode === 'dark'
-                            ? 'rgb(30, 41, 59)'
+                            ? 'rgb(75, 11, 28)'
                             : 'rgb(226, 232, 240)'
                     }}>
                         Admin Login
@@ -109,9 +109,9 @@ export default function AdminLogin() {
                             style={{
                                 background: mode === 'dark'
                                     ? 'rgb(226, 232, 240)'
-                                    : 'rgb(30, 41, 59)',
+                                    : 'rgb(75, 11, 28)',
                                 color: mode === 'dark'
-                                    ? 'rgb(30, 41, 59)'
+                                    ? 'rgb(75, 11, 28)'
                                     : 'rgb(226, 232, 240)'
                             }}>
                             Login

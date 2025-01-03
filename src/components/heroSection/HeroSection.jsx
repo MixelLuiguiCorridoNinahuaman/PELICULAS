@@ -7,17 +7,17 @@ function HeroSection() {
     const { mode } = context;
     return (
         <section
-            style={{ background: mode === 'dark' ? 'rgb(30, 41, 59)' : '#30336b' }}>
+            style={{ background: mode === 'dark' ? 'rgb(75, 11, 28)' : '#941331' }}>
 
             {/* Hero Section  */}
-            <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+            <div className="container mx-auto flex px-5 py-20 items-center justify-center flex-col">
                 {/* Main Content  */}
                 <main>
                     <div className="text-center">
                         <div className="mb-2">
                             {/* Image  */}
                             <div className="flex justify-center">
-                                <img src="/movie-talk.svg" alt="Movie Talk Logo" style={{ width: '430px' }} />
+                                <img src="/movie-talk.svg" alt="Movie Talk Logo" style={{ width: '450px' }} />
                             </div>
 
 

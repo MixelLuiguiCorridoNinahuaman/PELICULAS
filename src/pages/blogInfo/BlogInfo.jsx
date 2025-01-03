@@ -152,7 +152,7 @@ function BlogInfo() {
                         ${mode === 'dark' ? '[&>h6]:text-white' : '[&>h6]:text-black'}
 
                         [&>p]:text-[16px] [&>p]:mb-1.5
-                        ${mode === 'dark' ? '[&>p]:text-[#7efff5]' : '[&>p]:text-black'}
+                        ${mode === 'dark' ? '[&>p]:text-[#ffffff]' : '[&>p]:text-black'}
 
                         [&>ul]:list-disc [&>ul]:mb-2
                         ${mode === 'dark' ? '[&>ul]:text-white' : '[&>ul]:text-black'}

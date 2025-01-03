@@ -87,11 +87,11 @@ function CreateBlog() {
         <div className=' container mx-auto max-w-5xl py-6'>
             <div className="p-5" style={{
                 background: mode === 'dark'
-                    ? '#353b48'
+                    ? '#4b0b1c'
                     : 'rgb(226, 232, 240)',
                 borderBottom: mode === 'dark'
                     ? ' 4px solid rgb(226, 232, 240)'
-                    : ' 4px solid rgb(30, 41, 59)'
+                    : ' 4px solid rgb(75, 11, 28)'
             }}>
                 {/* Top Item  */}
                 <div className="mb-2 flex justify-between">
@@ -220,9 +220,9 @@ function CreateBlog() {
                     style={{
                         background: mode === 'dark'
                             ? 'rgb(226, 232, 240)'
-                            : 'rgb(30, 41, 59)',
+                            : 'rgb(75, 11, 28)',
                         color: mode === 'dark'
-                            ? 'rgb(30, 41, 59)'
+                            ? 'rgb(75, 11, 28)'
                             : 'rgb(226, 232, 240)'
                     }}
                 >
@@ -231,7 +231,10 @@ function CreateBlog() {
 
                 {/* Six Preview Section  */}
                 <div className="">
-                    <h1 className=" text-center mb-3 text-2xl">Preview</h1>
+                    <h1 className={`text-center mb-3 text-2xl mt-5 ${mode === 'dark' ? 'text-[#ffffff]' : 'text-black'}`}>
+                        PREVIEW
+                    </h1>
+
                     <div className="content">
                         <div
                             className={`[&> h1]:text-[32px] [&>h1]:font-bold  [&>h1]:mb-2.5
@@ -253,7 +256,7 @@ function CreateBlog() {
                         ${mode === 'dark' ? '[&>h6]:text-white' : '[&>h6]:text-black'}
 
                         [&>p]:text-[16px] [&>p]:mb-1.5
-                        ${mode === 'dark' ? '[&>p]:text-[#7efff5]' : '[&>p]:text-black'}
+                        ${mode === 'dark' ? '[&>p]:text-[#ffffff]' : '[&>p]:text-black'}
 
                         [&>ul]:list-disc [&>ul]:mb-2
                         ${mode === 'dark' ? '[&>ul]:text-white' : '[&>ul]:text-black'}
