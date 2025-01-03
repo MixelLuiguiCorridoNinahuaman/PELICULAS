@@ -55,22 +55,27 @@ export default function SearchDialog() {
                                         <li key={index} className="w-full mb-4">
                                             <div
                                                 onClick={() => naviagte(`/bloginfo/${item.id}`)}
-                                                className="container cursor-pointer mx-auto px-4 bg-gray-200 p-2 rounded-lg"
+                                                className="container cursor-pointer mx-auto px-0 bg-gray-200 p-0 rounded-lg"
                                             >
                                                 {/* Flex container for image and text */}
-                                                <div className="flex items-center">
+                                                <div style={{ backgroundColor: '#f8d7da' }} className="flex items-center p-4 rounded-lg">
                                                     {/* Blog Thumbnail */}
                                                     <img className="w-20 h-20 mr-4 rounded-lg" src={item.thumbnail} alt="" />
 
                                                     {/* Text Container */}
                                                     <div className="flex flex-col">
                                                         {/* Blog Date */}
-                                                        <p className="text-sm mb-1">{item.date}</p>
+                                                        <p style={{ color: '#4b0b1c' }} className="text-sm mb-1">
+                                                            {item.date}
+                                                        </p>
 
                                                         {/* Blog Title */}
-                                                        <h1 className="font-bold">{item.blogs.title}</h1>
+                                                        <h1 style={{ color: '#4b0b1c' }} className="font-bold">
+                                                            {item.blogs.title}
+                                                        </h1>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </li>
                                     ))
@@ -78,15 +83,12 @@ export default function SearchDialog() {
                         </ul>
                     </div>
 
-
-
-
                     {/* Heading  */}
                     {/* <div className=" text-center">
                         <h1 className=" text-gray-600">Created by Achira Nadeeshan</h1>
                     </div> */}
                 </DialogBody>
             </Dialog>
-        </Fragment>
+        </Fragment >
     );
 }
