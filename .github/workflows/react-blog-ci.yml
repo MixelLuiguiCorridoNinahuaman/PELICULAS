@@ -3,10 +3,10 @@ name: build-test-deploy-to-vercel
 on:
   push:
     branches:
-      - main
+      - main  # Trigger workflow on push to the 'main' branch
   pull_request:
     branches:
-      - main
+      - main  # Trigger workflow on a pull request to 'main'
 
 jobs:
   build:
@@ -21,16 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
-
-      # Cache Node.js dependencies
-      - name: Cache Node.js dependencies
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
+          node-version: '22'  # Specify the Node.js version you want
 
       # Create the .env file from GitHub secrets
       - name: Create .env file
@@ -69,15 +60,6 @@ jobs:
         with:
           node-version: '22'
 
-      # Cache Node.js dependencies
-      - name: Cache Node.js dependencies
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-
       # Create the .env file for tests
       - name: Create .env file
         run: |
@@ -95,10 +77,10 @@ jobs:
         run: |
           npm install
 
-      # Run tests (currently skipped)
+      # Run tests
       - name: Run tests
         run: |
-          npm test -- --coverage
+          npm test -- --coverage  # Runs tests with coverage reporting
         if: false
 
   deploy:
@@ -116,15 +98,6 @@ jobs:
         with:
           node-version: '22'
 
-      # Cache Node.js dependencies
-      - name: Cache Node.js dependencies
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-
       # Create the .env file for deployment
       - name: Create .env file
         run: |
@@ -140,9 +113,11 @@ jobs:
       # Deploy to Vercel using the Vercel CLI
       - name: Deploy to Vercel
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Store your Vercel token as a secret
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}  # Store your Vercel Organization ID as a secret
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}  # Store your Vercel Project ID as a secret
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Ensure VERCEL_TOKEN is stored in GitHub secrets
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}  # Ensure VERCEL_ORG_ID is stored in GitHub secrets
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}  # Ensure VERCEL_PROJECT_ID is stored in GitHub secrets
         run: |
           npm install -g vercel  # Install the Vercel CLI
-          vercel --token $VERCEL_TOKEN --prod --confirm  # Deploy the project to Vercel (production environment)
+          vercel --token $VERCEL_TOKEN --prod --confirm  # Deploy to Vercel with the --token argument
+
+
