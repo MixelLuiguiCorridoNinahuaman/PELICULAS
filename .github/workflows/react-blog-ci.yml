@@ -80,7 +80,7 @@ jobs:
       # Run tests
       - name: Run tests
         run: |
-          timeout 10s npm run dev
+          timeout 10s npm run dev || [ $? -eq 124 ]  # Ignore exit code 124 (timeout)
 
   deploy:
     name: Deploy
