@@ -25,7 +25,7 @@ export default function SearchDialog() {
                 <AiOutlineSearch size={20} color="white" />
             </div>
             {/* Dialog  */}
-            <Dialog className=" relative right-[1em] w-[25em]  md:right-0 md:w-0 lg:right-0 lg:w-0" open={open} handler={handleOpen} style={{ background: mode === 'light' ? '#2f3542' : '#2f3542', color: mode === 'dark' ? 'white' : 'black' }}>
+            <Dialog className=" relative right-[1em] w-[25em]  md:right-0 md:w-0 lg:right-0 lg:w-0" open={open} handler={handleOpen} style={{ background: mode === 'light' ? '#4b0b1c' : '#4b0b1c', color: mode === 'dark' ? 'white' : 'black' }}>
                 {/* Dialog Body  */}
                 <DialogBody >
                     <div className="flex w-full   justify-center">

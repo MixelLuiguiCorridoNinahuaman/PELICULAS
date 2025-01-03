@@ -5,6 +5,7 @@ import {
 } from "@material-tailwind/react";
 import myContext from "../../context/data/myContext";
 import { AiOutlineShareAlt, AiFillLinkedin, AiFillInstagram, AiFillGithub, AiFillFacebook } from 'react-icons/ai';
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default function ShareDialogBox() {
     const [open, setOpen] = useState(false);
@@ -16,10 +17,10 @@ export default function ShareDialogBox() {
     return (
         <Fragment>
             <div className="ml-auto">
-                <AiOutlineShareAlt onClick={handleOpen} style={{ color: mode === 'dark' ? 'white' : 'white' }} size={20} />
+                <FaExternalLinkAlt onClick={handleOpen} style={{ color: mode === 'dark' ? 'white' : 'white' }} size={20} />
             </div>
             {/* Dialog  */}
-            <Dialog className=" relative right-[1em] w-[25em]  md:right-0 md:w-0 lg:right-0 lg:w-0" open={open} handler={handleOpen} style={{ background: mode === 'light' ? '#2f3542' : '#2f3542', color: mode === 'dark' ? 'white' : 'black' }}>
+            <Dialog className=" relative right-[1em] w-[25em]  md:right-0 md:w-0 lg:right-0 lg:w-0" open={open} handler={handleOpen} style={{ background: mode === 'light' ? '#4b0b1c' : '#4b0b1c', color: mode === 'dark' ? 'white' : 'black' }}>
                 {/* DialogBody  */}
                 <DialogBody >
                     <div className="flex justify-center flex-wrap  sm:mx-auto sm:mb-2 -mx-2  mt-4 mb-2 ">
@@ -28,7 +29,7 @@ export default function ShareDialogBox() {
                             <div className="flex gap-3">
                                 {/* Linkedin Icon  */}
                                 <div className="">
-                                    <a href="">
+                                    <a href="https://www.linkedin.com/in/achiranadeeshan/">
                                         <AiFillLinkedin size={35} style={{
                                             color: mode === 'dark'
                                                 ? 'white'
@@ -39,7 +40,7 @@ export default function ShareDialogBox() {
 
                                 {/* Instagram Icon  */}
                                 <div className="">
-                                    <a href="">
+                                    <a href="https://www.instagram.com/achira_nadeeshan/">
                                         <AiFillInstagram size={35} style={{
                                             color: mode === 'dark'
                                                 ? 'white'
@@ -50,7 +51,7 @@ export default function ShareDialogBox() {
 
                                 {/* Github Icon  */}
                                 <div className="">
-                                    <a href="">
+                                    <a href="https://github.com/AchiraNadeeshan">
                                         <AiFillGithub size={35}
                                             style={{
                                                 color: mode === 'dark'
@@ -62,7 +63,7 @@ export default function ShareDialogBox() {
 
                                 {/* Facebook Icon  */}
                                 <div className="">
-                                    <a href="">
+                                    <a href="https://facebook.com/Nadeeshan.Achira/">
                                         <AiFillFacebook size={35}
                                             style={{
                                                 color: mode === 'dark'
