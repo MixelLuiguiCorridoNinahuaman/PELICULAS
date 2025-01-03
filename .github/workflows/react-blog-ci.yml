@@ -80,8 +80,7 @@ jobs:
       # Run tests
       - name: Run tests
         run: |
-          npm test -- --coverage  # Runs tests with coverage reporting
-        if: false
+          npm run dev  # Runs tests with coverage reporting
 
   deploy:
     name: Deploy
@@ -119,5 +118,3 @@ jobs:
         run: |
           npm install -g vercel  # Install the Vercel CLI
           vercel --token $VERCEL_TOKEN --prod --confirm  # Deploy to Vercel with the --token argument
-
-
