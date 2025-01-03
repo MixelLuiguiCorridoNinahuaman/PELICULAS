@@ -1,102 +1,120 @@
-name: Placeholder CI
+name: build-test-deploy-to-vercel
 
-on: 
+on:
   push:
     branches:
-      - main
+      - main  # Trigger workflow on push to the 'main' branch
   pull_request:
     branches:
-      - main
+      - main  # Trigger workflow on a pull request to 'main'
 
 jobs:
-  noop:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Do nothing
-        run: echo "Placeholder CI - No actions are performed."
+      # Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-# name: Build, Test, and Deploy the blog to Vercel
+      # Set up Node.js for the build process
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'  # Specify the Node.js version you want
 
-# on:
-#   push:
-#     branches:
-#       - main  # Trigger workflow on push to the 'main' branch
-#   pull_request:
-#     branches:
-#       - main  # Trigger workflow on a pull request to 'main'
+      # Create the .env file from GitHub secrets
+      - name: Create .env file
+        run: |
+          echo "VITE_TINYMCE_API_KEY=${{ secrets.VITE_TINYMCE_API_KEY }}" >> .env
+          echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> .env
+          echo "VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> .env
+          echo "VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> .env
+          echo "VITE_FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> .env
+          echo "VITE_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> .env
+          echo "VITE_FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> .env
+          echo "VITE_FIREBASE_MEASUREMENT_ID=${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}" >> .env
 
-# jobs:
-#   build:
-#     name: Build
-#     runs-on: ubuntu-latest
-#     steps:
-#       # Checkout code from the repository
-#       - name: Checkout code
-#         uses: actions/checkout@v3
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
 
-#       # Set up Node.js for the build process
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '18'  # Specify the Node.js version you want
+      # Run the build process
+      - name: Build project
+        run: |
+          npm run build
 
-#       # Install dependencies
-#       - name: Install dependencies
-#         run: |
-#           npm install
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build  # Wait for the 'build' job to complete
+    steps:
+      # Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-#       # Run the build process
-#       - name: Build project
-#         run: |
-#           npm run build
+      # Set up Node.js for testing
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
 
-#   test:
-#     name: Test
-#     runs-on: ubuntu-latest
-#     needs: build  # Wait for the 'build' job to complete
-#     steps:
-#       # Checkout code from the repository
-#       - name: Checkout code
-#         uses: actions/checkout@v3
+      # Create the .env file for tests
+      - name: Create .env file
+        run: |
+          echo "VITE_TINYMCE_API_KEY=${{ secrets.VITE_TINYMCE_API_KEY }}" >> .env
+          echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> .env
+          echo "VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> .env
+          echo "VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> .env
+          echo "VITE_FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> .env
+          echo "VITE_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> .env
+          echo "VITE_FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> .env
+          echo "VITE_FIREBASE_MEASUREMENT_ID=${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}" >> .env
 
-#       # Set up Node.js for testing
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '18'
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
 
-#       # Install dependencies
-#       - name: Install dependencies
-#         run: |
-#           npm install
+      # Run tests
+      - name: Run tests
+        run: |
+          npm test  # Replace with your test command
 
-#       # Run tests
-#       - name: Run tests
-#         run: |
-#           npm test  # Replace with your test command
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: test  # Wait for the 'test' job to complete
+    steps:
+      # Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-#   deploy:
-#     name: Deploy
-#     runs-on: ubuntu-latest
-#     needs: test  # Wait for the 'test' job to complete
-#     steps:
-#       # Checkout code from the repository
-#       - name: Checkout code
-#         uses: actions/checkout@v3
+      # Set up Node.js for deployment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
 
-#       # Set up Node.js for deployment
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '18'
+      # Create the .env file for deployment
+      - name: Create .env file
+        run: |
+          echo "VITE_TINYMCE_API_KEY=${{ secrets.VITE_TINYMCE_API_KEY }}" >> .env
+          echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> .env
+          echo "VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> .env
+          echo "VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> .env
+          echo "VITE_FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> .env
+          echo "VITE_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> .env
+          echo "VITE_FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> .env
+          echo "VITE_FIREBASE_MEASUREMENT_ID=${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}" >> .env
 
-#       # Deploy to Vercel using the Vercel CLI
-#       - name: Deploy to Vercel
-#         env:
-#           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Store your Vercel token as a secret
-#           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}  # Store your Vercel Organization ID as a secret
-#           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}  # Store your Vercel Project ID as a secret
-#         run: |
-#           npm install -g vercel  # Install the Vercel CLI
-#           vercel --token $VERCEL_TOKEN --prod --confirm  # Deploy the project to Vercel (production environment)
-
+      # Deploy to Vercel using the Vercel CLI
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Store your Vercel token as a secret
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}  # Store your Vercel Organization ID as a secret
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}  # Store your Vercel Project ID as a secret
+        run: |
+          npm install -g vercel  # Install the Vercel CLI
+          vercel --token $VERCEL_TOKEN --prod --confirm  # Deploy the project to Vercel (production environment)
