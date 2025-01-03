@@ -80,7 +80,7 @@ jobs:
       # Run tests
       - name: Run tests
         run: |
-          npm run dev  # Runs tests with coverage reporting
+          timeout 10s npm run dev
 
   deploy:
     name: Deploy
