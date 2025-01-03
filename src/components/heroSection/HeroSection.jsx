@@ -17,17 +17,18 @@ function HeroSection() {
                         <div className="mb-2">
                             {/* Image  */}
                             <div className="flex justify-center">
-                                <img src="https://cdn-icons-png.flaticon.com/128/3685/3685253.png" alt="" />
+                                <img src="/movie-talk.svg" alt="Movie Talk Logo" style={{ width: '430px' }} />
                             </div>
 
+
                             {/* Text  */}
-                            <h1 className=' text-3xl text-white font-bold'>Movie Talk</h1>
+                            {/* <h1 className=' text-3xl text-white font-bold'>Movie Talk</h1> */}
                         </div>
 
                         {/* Paragraph  */}
                         <p
                             style={{ color: mode === 'dark' ? 'white' : 'white' }}
-                            className="sm:text-3xl text-xl font-extralight sm:mx-auto ">
+                            className="sm:text-3xl text-xl font-extralight sm:mx-auto mt-10">
                             Let's talk about movies and TV shows
                         </p>
                     </div>

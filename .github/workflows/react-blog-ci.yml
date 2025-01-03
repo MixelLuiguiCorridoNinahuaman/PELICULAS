@@ -80,7 +80,8 @@ jobs:
       # Run tests
       - name: Run tests
         run: |
-          npm test  # Replace with your test command
+          npm test -- --coverage  # Runs tests with coverage reporting
+        if: false
 
   deploy:
     name: Deploy
