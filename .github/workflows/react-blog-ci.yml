@@ -3,10 +3,10 @@ name: build-test-deploy-to-vercel
 on:
   push:
     branches:
-      - main  # Trigger workflow on push to the 'main' branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger workflow on a pull request to 'main'
+      - main
 
 jobs:
   build:
@@ -21,7 +21,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'  # Specify the Node.js version you want
+          node-version: '22'
+
+      # Cache Node.js dependencies
+      - name: Cache Node.js dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
 
       # Create the .env file from GitHub secrets
       - name: Create .env file
@@ -60,6 +69,15 @@ jobs:
         with:
           node-version: '22'
 
+      # Cache Node.js dependencies
+      - name: Cache Node.js dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
       # Create the .env file for tests
       - name: Create .env file
         run: |
@@ -77,10 +95,10 @@ jobs:
         run: |
           npm install
 
-      # Run tests
+      # Run tests (currently skipped)
       - name: Run tests
         run: |
-          npm test -- --coverage  # Runs tests with coverage reporting
+          npm test -- --coverage
         if: false
 
   deploy:
@@ -97,6 +115,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
+
+      # Cache Node.js dependencies
+      - name: Cache Node.js dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
 
       # Create the .env file for deployment
       - name: Create .env file
