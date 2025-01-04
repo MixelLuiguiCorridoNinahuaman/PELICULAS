@@ -27,12 +27,13 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
           >
             <input
               type="text"
-              placeholder="Enter Full Name (Optional)"
+              placeholder="Enter Your Name"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className="px-0 w-full text-sm border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400"
+              className="px-0 w-full text-sm border-0 focus:ring-0 focus:outline-none dark:placeholder-gray-400"
               style={{
                 background: mode === 'dark' ? '#4b0b1c' : 'rgb(226, 232, 240)',
+                color: mode === 'dark' ? 'white' : 'black', // Set text color
               }}
             />
           </div>
@@ -52,9 +53,10 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
               rows={6}
               value={commentText}
               onChange={(e) => setcommentText(e.target.value)}
-              className="px-0 w-full text-sm border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400"
+              className="px-0 w-full text-sm border-0 focus:ring-0 focus:outline-none dark:placeholder-gray-400"
               style={{
                 background: mode === 'dark' ? '#4b0b1c' : 'rgb(226, 232, 240)',
+                color: mode === 'dark' ? 'white' : 'black', // Set text color
               }}
               placeholder="Write a comment..."
               required
@@ -83,6 +85,7 @@ function Comment({ addComment, commentText, setcommentText, allComment, fullName
             </Button>
           </div>
         </form>
+
 
         {/* Comments Section */}
         <article
