@@ -55,8 +55,8 @@ export default function Nav() {
                 <div>
                     {admin
                         ? "" :
-                        <Link to={'/adminlogin'} className="flex items-center">
-                            Admin Login
+                        <Link to={'/admin'} className="flex items-center">
+                            {/* Admin Login */}
                         </Link>}
                 </div>
             </Typography>

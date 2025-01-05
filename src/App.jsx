@@ -24,7 +24,7 @@ function App() {
           <Route path="/blog" element={<Blog/>} />
           <Route path="/allblogs" element={<AllBlogs/>} />
           <Route path="/bloginfo/:id" element={<BlogInfo/>} />
-          <Route path="/adminlogin" element={<AdminLogin/>} />
+          <Route path="/admin" element={<AdminLogin/>} />
           <Route path="/dashboard" element={
             <ProtectedRouteForAdmin>
               <Dashboard />
@@ -62,6 +62,6 @@ export const ProtectedRouteForAdmin = ({ children }) => {
   if (allowedEmails.includes(admin?.user?.email)) {
     return children;
   } else {
-    return <Navigate to={'/adminlogin'} />;
+    return <Navigate to={'/admin'} />;
   }
 };
