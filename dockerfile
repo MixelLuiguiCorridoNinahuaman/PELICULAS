@@ -1,29 +1,29 @@
-# Use the official Node.js image to build the app
+# 1. Use the official Node.js image to build the app
 FROM node:23 AS build
 
-# Set the working directory inside the container
+# 2. Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# 3. Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# 4. Install dependencies
 RUN npm install
 
-# Copy the rest of the app's files
+# 5. Copy the rest of the app's files
 COPY . .
 
-# Build the React app
+# 6. Build the React app
 RUN npm run build
 
-# Use the official NGINX image to serve the app
+# 7. Use the official NGINX image to serve the app
 FROM nginx:latest
 
-# Copy build files to NGINX's default location
+# 8. Copy build files to NGINX's default location
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expose the port NGINX will listen on
+# 9. Expose the port NGINX will listen on
 EXPOSE 80
 
-# Start NGINX
+# 10. Start NGINX
 CMD ["nginx", "-g", "daemon off;"]
