@@ -23,7 +23,7 @@ function HeroSection() {
 
                             {/* Text  */}
                             <h1 className=' text-3xl text-white font-bold mt-10'>Let's talk about movies</h1>
-                        </div>
+                        {/* </div> */}
 
                         {/* Paragraph  */}
                         {/* <p
