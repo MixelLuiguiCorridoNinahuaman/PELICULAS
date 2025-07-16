@@ -30,7 +30,7 @@ function Footer() {
                         rel="noopener noreferrer"
                         target="_blank"
                     >
-                        @Achira Nadeeshan
+                       {/* @Achira Nadeeshan */}
                     </a>
                 </p>
 
