@@ -1,10 +1,4 @@
-# movie-talk
-
-A modern blog platform built to discuss movies, featuring a React.js front end, Firebase database integration, Dockerized deployment, and NGINX load balancing. The project employs GitHub Actions for streamlined CI/CD workflows.
-
-<!-- # Movie Talk
-
-Movie Talk is a web application for discussing and exploring movies. Built with React, Vite, Firebase, and TinyMCE, it offers a seamless user experience for movie enthusiasts. -->
+# PELICULAS
 
 ## Getting Started
 
@@ -74,5 +68,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 This project is licensed under the [MIT License](LICENSE). -->
 
 ---
-
-For any questions or issues, feel free to open an issue in the repository.
