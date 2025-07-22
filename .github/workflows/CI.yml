@@ -67,17 +67,3 @@ jobs:
 
       - name: Run smoke test
         run: timeout 10s npm run dev || true
-
-  deploy:
-    name: Deploy to Vercel
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-
-      - name: Deploy Project
-        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
